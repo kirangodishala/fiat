@@ -206,7 +206,7 @@ public class DefaultPermissionsResolver implements PermissionsResolver {
   @Override
   public Map<String, UserPermission> resolveResources(
       @NonNull Map<String, Collection<Role>> userToRoles) {
-    return userToRoles.entrySet().stream()
+    return userToRoles.entrySet().parallelStream()
         .map(
             entry -> {
               String userId = entry.getKey();
